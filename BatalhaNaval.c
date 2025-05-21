@@ -8,7 +8,6 @@
 #define NAVIO 3
 #define HABILIDADE 5
 
-// Inicializa tabuleiro com 0 (água)
 void inicializarTabuleiro(int tabuleiro[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO]) {
     for (int i = 0; i < TAMANHO_TABULEIRO; i++) {
         for (int j = 0; j < TAMANHO_TABULEIRO; j++) {
@@ -17,7 +16,6 @@ void inicializarTabuleiro(int tabuleiro[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO]) {
     }
 }
 
-// Exibe o tabuleiro
 void exibirTabuleiro(int tabuleiro[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO]) {
     printf("\nTabuleiro:\n\n   ");
     for (int i = 0; i < TAMANHO_TABULEIRO; i++) {
@@ -32,14 +30,13 @@ void exibirTabuleiro(int tabuleiro[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO]) {
             if (valor == AGUA) c = '.';
             else if (valor == NAVIO) c = 'N';
             else if (valor == HABILIDADE) c = '*';
-            else c = '?'; // valor inesperado
+            else c = '?'; 
             printf("%c ", c);
         }
         printf("\n");
     }
 }
 
-// Posiciona um navio no tabuleiro com coordenadas fixas
 void posicionarNavioHorizontal(int tabuleiro[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO], int linha, int coluna) {
     for (int i = 0; i < TAMANHO_NAVIO; i++) {
         tabuleiro[linha][coluna + i] = NAVIO;
@@ -52,7 +49,6 @@ void posicionarNavioVertical(int tabuleiro[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO]
     }
 }
 
-// Gera matriz Cone 5x5 (cone apontando para baixo)
 void gerarMatrizCone(int matriz[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE]) {
     for (int i = 0; i < TAMANHO_HABILIDADE; i++) {
         for (int j = 0; j < TAMANHO_HABILIDADE; j++) {
@@ -70,7 +66,6 @@ void gerarMatrizCone(int matriz[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE]) {
     }
 }
 
-// Gera matriz Cruz 5x5 (formato cruzado com centro)
 void gerarMatrizCruz(int matriz[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE]) {
     for (int i = 0; i < TAMANHO_HABILIDADE; i++) {
         for (int j = 0; j < TAMANHO_HABILIDADE; j++) {
@@ -79,7 +74,6 @@ void gerarMatrizCruz(int matriz[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE]) {
     }
 }
 
-// Gera matriz Octaedro (formato de losango)
 void gerarMatrizOctaedro(int matriz[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE]) {
     for (int i = 0; i < TAMANHO_HABILIDADE; i++) {
         for (int j = 0; j < TAMANHO_HABILIDADE; j++) {
@@ -96,7 +90,6 @@ void gerarMatrizOctaedro(int matriz[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE]) {
     }
 }
 
-// Aplica matriz de habilidade ao tabuleiro centrada no ponto de origem
 void aplicarHabilidade(int tabuleiro[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO],
                        int habilidade[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE],
                        int origemLinha, int origemColuna) {
@@ -120,11 +113,9 @@ int main() {
     int tabuleiro[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO];
     inicializarTabuleiro(tabuleiro);
 
-    // Posiciona navios fixos
     posicionarNavioHorizontal(tabuleiro, 2, 3);
     posicionarNavioVertical(tabuleiro, 6, 1);
 
-    // Matrizes de habilidades
     int cone[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE];
     int cruz[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE];
     int octaedro[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE];
@@ -133,12 +124,11 @@ int main() {
     gerarMatrizCruz(cruz);
     gerarMatrizOctaedro(octaedro);
 
-    // Aplica habilidades em pontos de origem específicos
     aplicarHabilidade(tabuleiro, cone, 1, 1);
     aplicarHabilidade(tabuleiro, cruz, 5, 5);
     aplicarHabilidade(tabuleiro, octaedro, 8, 8);
 
-    // Exibe o resultado final
+    // Resultado
     exibirTabuleiro(tabuleiro);
 
     return 0;
