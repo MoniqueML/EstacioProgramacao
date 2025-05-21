@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-// Estrutura da carta
 struct Carta {
     char nomePais[100];
     int populacao;
@@ -11,7 +10,7 @@ struct Carta {
     float densidade;
 };
 
-// Função para obter valor do atributo escolhido
+// Função para obter valores
 float getValor(struct Carta c, int opcao) {
     switch(opcao) {
         case 1: return (float)c.populacao;
@@ -23,7 +22,7 @@ float getValor(struct Carta c, int opcao) {
     }
 }
 
-// Função para exibir nome do atributo
+// Função para exibição do nome
 const char* getNomeAtributo(int opcao) {
     switch(opcao) {
         case 1: return "População";
@@ -35,7 +34,6 @@ const char* getNomeAtributo(int opcao) {
     }
 }
 
-// Função principal
 int main() {
     struct Carta carta1 = {"Brasil", 203000000, 8515767.0, 2500.0, 100};
     struct Carta carta2 = {"Canadá", 39000000, 9984670.0, 2200.0, 120};
@@ -75,7 +73,7 @@ int main() {
         return 1;
     }
 
-    // Obtem os valores dos atributos escolhidos
+    // Obtem os valores dos atributos
     float valor1_c1 = getValor(carta1, atributo1);
     float valor1_c2 = getValor(carta2, atributo1);
     float valor2_c1 = getValor(carta1, atributo2);
@@ -93,7 +91,6 @@ int main() {
 
     int vencedor_final = (soma_c1 > soma_c2) ? 1 : (soma_c2 > soma_c1 ? 2 : 0);
 
-    // Exibição
     printf("\n===== RESULTADO =====\n");
     printf("Carta 1 - %s\n", carta1.nomePais);
     printf("  %s: %.2f\n", getNomeAtributo(atributo1), valor1_c1);
