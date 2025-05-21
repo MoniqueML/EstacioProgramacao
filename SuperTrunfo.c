@@ -6,7 +6,7 @@ struct Carta {
     char nomeCidade[100];
     unsigned long int populacao;
     float area;
-    float pib; // em bilhões de reais
+    float pib;
     int pontosTuristicos;
     float densidadePopulacional;
     float pibPerCapita;
@@ -17,7 +17,7 @@ int main() {
     struct Carta carta1;
     struct Carta carta2;
 
-    // Leitura da Carta 1
+    // Aqui iremos realizar a apresentação da primeira carta (carta1)
     printf("Cadastro da Carta 1:\n");
     printf("Estado (A-H): ");
     scanf(" %c", &carta1.estado);
@@ -34,14 +34,14 @@ int main() {
     printf("Número de Pontos Turísticos: ");
     scanf("%d", &carta1.pontosTuristicos);
 
-    // Cálculo da Carta 1
+    // Realização do calculo cálculo da Carta 1
     carta1.densidadePopulacional = carta1.populacao / carta1.area;
     carta1.pibPerCapita = (carta1.pib * 1000000000.0f) / carta1.populacao;
     carta1.superPoder = (float)carta1.populacao + carta1.area + carta1.pib +
                         (float)carta1.pontosTuristicos + carta1.pibPerCapita +
                         (1.0f / carta1.densidadePopulacional);
 
-    // Leitura da Carta 2
+    // Aqui iremos realizar a apresentação da segunda carta (carta2)
     printf("\nCadastro da Carta 2:\n");
     printf("Estado (A-H): ");
     scanf(" %c", &carta2.estado);
@@ -58,14 +58,14 @@ int main() {
     printf("Número de Pontos Turísticos: ");
     scanf("%d", &carta2.pontosTuristicos);
 
-    // Cálculo da Carta 2
+    // Realização do calculo cálculo da Carta 2
     carta2.densidadePopulacional = carta2.populacao / carta2.area;
     carta2.pibPerCapita = (carta2.pib * 1000000000.0f) / carta2.populacao;
     carta2.superPoder = (float)carta2.populacao + carta2.area + carta2.pib +
                         (float)carta2.pontosTuristicos + carta2.pibPerCapita +
                         (1.0f / carta2.densidadePopulacional);
 
-    // Exibição das comparações
+    // Apresentação das comparações entre carta1 e carta2
     printf("\nComparação de Cartas:\n");
 
     printf("População: Carta 1 venceu (%d)\n", carta1.populacao > carta2.populacao);
